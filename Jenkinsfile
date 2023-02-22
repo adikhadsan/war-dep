@@ -62,16 +62,16 @@ pipeline{
 //              }
 //          }
 	
-	stage('	Copy jar file'){
-	     steps{
-		 sh'pwd' 
-		 sh 'cd ../../../../..'
-		 sh 'pwd'
-		 sh 'sudo cp /home/lenovouser/Downloads/war/"${fname}"*.war .'
-		 sh'ls'    
-		// sh 'docker build -t spring-img --build-arg dokcerjob=$JOB_NAME .'
-	     }
-	 }
+// 	stage('	Copy jar file'){
+// 	     steps{
+// 		 sh'pwd' 
+// 		 sh 'cd ../../../../..'
+// 		 sh 'pwd'
+// 		 sh 'sudo cp /home/lenovouser/Downloads/war/"${fname}"*.war .'
+// 		 sh'ls'    
+// 		// sh 'docker build -t spring-img --build-arg dokcerjob=$JOB_NAME .'
+// 	     }
+// 	 }
 	    
 	  
 	
