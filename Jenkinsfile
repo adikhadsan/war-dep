@@ -65,7 +65,7 @@ pipeline{
 	stage('	Copy jar file'){
 	     steps{
 		 sh'pwd' 
-		 sh 'cd'
+		 sh 'cd ../../../../..'
 		 sh 'pwd'
 		 sh 'sudo mv /home/lenovouser/Downloads/war/"${fname}"*.war .'
 		 sh'ls'    
