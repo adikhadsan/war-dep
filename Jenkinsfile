@@ -67,7 +67,7 @@ pipeline{
 		 sh'pwd' 
 		 sh 'cd ../../../../..'
 		 sh 'pwd'
-		 sh 'cp /home/lenovouser/Downloads/war/"${fname}"*.war .'
+		 sh 'sudo cp /home/lenovouser/Downloads/war/"${fname}"*.war .'
 		 sh'ls'    
 		// sh 'docker build -t spring-img --build-arg dokcerjob=$JOB_NAME .'
 	     }
