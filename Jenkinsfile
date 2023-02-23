@@ -1,5 +1,5 @@
 pipeline{
-	agent { label 'client1'}
+	agent any
      environment {
 		DOCKERHUB_CREDENTIALS = credentials('DockerHub')
 	        GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse --short HEAD')
