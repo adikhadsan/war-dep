@@ -16,7 +16,7 @@ pipeline{
 // 	        docker= sh(script: 'sshpass -p s1 ssh vboxuser@192.168.56.102 docker --version',returnStdout: true)
 // 	        file_path=""
      }
-//     stages {
+    stages {
 // 	    stage('Clone another repository') {
 // 		    steps { 
 // 			    git branch: 'main',
