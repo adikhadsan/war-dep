@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+	agent { label 'client1'}
      environment {
 		DOCKERHUB_CREDENTIALS = credentials('DockerHub')
 	        GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse --short HEAD')
@@ -14,13 +14,13 @@ pipeline{
 // 	        docker= sh(script: 'sshpass -p s1 ssh vboxuser@192.168.56.102 docker --version',returnStdout: true)
 // 	        file_path=""
      }
-    stages {
-	    stage('Clone another repository') {
-		    steps { 
-			    git branch: 'main',
-// 		            credentialsId: 'my-credential-id',
-		            url: 'https://github.com/adikhadsan/all-project.git'
-		    }
+//     stages {
+// 	    stage('Clone another repository') {
+// 		    steps { 
+// 			    git branch: 'main',
+// // 		            credentialsId: 'my-credential-id',
+// 		            url: 'https://github.com/adikhadsan/all-project.git'
+// 		    }
 	    }
 	  /*  stage('name'){
 		    steps {
@@ -90,12 +90,12 @@ pipeline{
 // 		    }
 // 	    }
 	
-// 	 stage('docker build'){
-// 	     steps{
-// 		     sh'docker build --build-arg file-name="${fname}" -t $USER_DOCKER/$IMG_NAME:$GIT_COMMIT .'
-// 		// sh 'docker build -t spring-img-jar --build-arg dokcerjob=$JOB_NAME .'
-// 	     }
-// 	 } 
+	 stage('docker build'){
+	     steps{
+		     sh'docker build --build-arg file-name="${fname}" -t $USER_DOCKER/$IMG_NAME:$GIT_COMMIT .'
+		// sh 'docker build -t spring-img-jar --build-arg dokcerjob=$JOB_NAME .'
+	     }
+	 } 
 // 	 stage('image check'){
 // 	     steps{
 // 		 sh'sleep 30'
