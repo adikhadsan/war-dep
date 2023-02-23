@@ -15,7 +15,7 @@ pipeline{
 // 	        file_path=""
      }
     stages {
-	    stage('Prepare/Checkout') { // for display purposes
+	    stage('Prepare/Checkout') { 
 		    git branch: 'main', url: 'https://github.com/adikhadsan/all-project.git'
 	    }
 	  /*  stage('name'){
