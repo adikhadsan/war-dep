@@ -15,8 +15,12 @@ pipeline{
 // 	        file_path=""
      }
     stages {
-	    stage('Prepare/Checkout') { 
-		    git branch: 'main', url: 'https://github.com/adikhadsan/all-project.git'
+	    stage('Clone another repository') {
+		    steps { 
+			    git branch: 'main',
+// 		            credentialsId: 'my-credential-id',
+		            url: 'https://github.com/adikhadsan/all-project.git'
+		    }
 	    }
 	  /*  stage('name'){
 		    steps {
