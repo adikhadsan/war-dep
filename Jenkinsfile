@@ -15,6 +15,9 @@ pipeline{
 // 	        file_path=""
      }
     stages {
+	    stage('Prepare/Checkout') { // for display purposes
+		    git branch: 'main', url: 'https://github.com/adikhadsan/all-project.git'
+	    }
 	  /*  stage('name'){
 		    steps {
 			    
@@ -76,47 +79,47 @@ pipeline{
 	  
 	
 	    
-	    stage('git commit id'){
-		    steps{
-// 			    sh'git_id=$(git rev-parse --short "$GITHUB_SHA")'
-			    sh'echo $GIT_COMMIT'
-		    }
-	    }
+// 	    stage('git commit id'){
+// 		    steps{
+// // 			    sh'git_id=$(git rev-parse --short "$GITHUB_SHA")'
+// 			    sh'echo $GIT_COMMIT'
+// 		    }
+// 	    }
 	
-	 stage('docker build'){
-	     steps{
-		     sh'docker build --build-arg file-name="${fname}" -t $USER_DOCKER/$IMG_NAME:$GIT_COMMIT .'
-		// sh 'docker build -t spring-img-jar --build-arg dokcerjob=$JOB_NAME .'
-	     }
-	 } 
-	 stage('image check'){
-	     steps{
-		 sh'sleep 30'
-		 sh'docker images'
-	     }
-	 }
-	 stage('docker login'){
-	     steps{
+// 	 stage('docker build'){
+// 	     steps{
+// 		     sh'docker build --build-arg file-name="${fname}" -t $USER_DOCKER/$IMG_NAME:$GIT_COMMIT .'
+// 		// sh 'docker build -t spring-img-jar --build-arg dokcerjob=$JOB_NAME .'
+// 	     }
+// 	 } 
+// 	 stage('image check'){
+// 	     steps{
+// 		 sh'sleep 30'
+// 		 sh'docker images'
+// 	     }
+// 	 }
+// 	 stage('docker login'){
+// 	     steps{
 
-		sh 'echo $DOCKERHUB_CREDENTIALS_USR'
-		sh 'echo $DOCKERHUB_CREDENTIALS_PSW'
-		sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $USER_DOCKER -p $PASS_DOCKER'
-	     }
-	 } 
-	 stage('docker push'){
-	     steps{
-		 sh 'docker push $USER_DOCKER/$IMG_NAME:$GIT_COMMIT'
-	     }
-	 }
+// 		sh 'echo $DOCKERHUB_CREDENTIALS_USR'
+// 		sh 'echo $DOCKERHUB_CREDENTIALS_PSW'
+// 		sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $USER_DOCKER -p $PASS_DOCKER'
+// 	     }
+// 	 } 
+// 	 stage('docker push'){
+// 	     steps{
+// 		 sh 'docker push $USER_DOCKER/$IMG_NAME:$GIT_COMMIT'
+// 	     }
+// 	 }
 	 
 	    
-	 stage('docker run on remote'){
-	     steps{
-// 		 sh 'ansible-playbook application.yml --extra-vars "image_name=$USER_DOCKER/$IMG_NAME:$GIT_COMMIT port=$PORT_app"' 
-		 sh 'docker run -d -p $PORT_app:8080 --net static --ip 10.11.0.13 --name db-application-$GIT_COMMIT 8485012281/db-application:$GIT_COMMIT'
-		 sh 'sleep 30'
-		 sh 'docker ps'
-	     }
-	 }
+// 	 stage('docker run on remote'){
+// 	     steps{
+// // 		 sh 'ansible-playbook application.yml --extra-vars "image_name=$USER_DOCKER/$IMG_NAME:$GIT_COMMIT port=$PORT_app"' 
+// 		 sh 'docker run -d -p $PORT_app:8080 --net static --ip 10.11.0.13 --name db-application-$GIT_COMMIT 8485012281/db-application:$GIT_COMMIT'
+// 		 sh 'sleep 30'
+// 		 sh 'docker ps'
+// 	     }
+// 	 }
     }
 }
